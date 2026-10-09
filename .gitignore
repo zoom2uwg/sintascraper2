@@ -1,0 +1,45 @@
+# ============================================================
+# .gitignore — SINTAScraper
+# Prinsip: commit hanya source + docs + fixture.
+# Jangan commit: kredensial, dependensi, hasil scrape, artefak lokal.
+# ============================================================
+
+# --- 1. Kredensial & secrets (JANGAN PERNAH commit) ---
+.env
+.env.*.local
+!.env.example
+
+# --- 2. Dependensi Node.js (install ulang via `npm ci`) ---
+sinta-scraper/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- 3. Hasil scrape & ekspor (generated, reproducible) ---
+sinta-scraper/output.*
+sinta-scraper/sinta_export.*
+sinta-scraper/data/
+sinta-scraper/exports/
+data/
+exports/
+
+# --- 4. Screenshot & profil browser sementara ---
+sinta-scraper/browser-test-shot.png
+sinta-scraper/*-shot.png
+sinta-scraper/.chrome-profile/
+.chrome-profile/
+sinta-test-profile/
+
+# --- 5. Log runtime ---
+*.log
+sinta-scraper/logs/
+logs/
+
+# --- 6. Sampah OS / editor ---
+Thumbs.db
+Desktop.ini
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*~

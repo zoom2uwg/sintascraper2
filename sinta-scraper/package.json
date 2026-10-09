@@ -1,0 +1,25 @@
+{
+  "name": "sinta-scraper",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node scraper.js",
+    "dev": "node scraper.js",
+    "export:borang-penelitian": "node export-borang.js --jenis penelitian --input fixtures/sample-researches.json --authors fixtures/sample-authors.json",
+    "export:borang-pengabdian": "node export-borang.js --jenis pengabdian --input fixtures/sample-researches.json --authors fixtures/sample-authors.json --out exports/borang-pengabdian",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "csv-writer": "^1.6.0",
+    "dotenv": "^18.0.6",
+    "exceljs": "^4.4.0",
+    "puppeteer": "^24.43.1",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  }
+}

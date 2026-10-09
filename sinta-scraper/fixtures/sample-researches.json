@@ -1,0 +1,144 @@
+[
+  {
+    "judul": "MODEL EKSTRAKSI KUINTUPEL UNTUK ANALISIS ASPEK–KATEGORI–OPINI–SENTIMEN–EMOSI BERBAHASA INDONESIA PADA ULASAN APLIKASI BANK DIGITAL MENGGUNAKAN FINE-TUNING INDOBERT",
+    "leader": "Syahroni Wahyu Iriananda",
+    "scheme": "PENELITIAN HIBAH INSTITUSI ( PERINTIS )",
+    "year": 2026,
+    "fund_rp": 4000000,
+    "status": "Approved",
+    "source": "INTERNAL SOURCE",
+    "members": [
+      {
+        "sinta_id": 6738705,
+        "nama": "Hanif Rani Iswari"
+      }
+    ],
+    "sinta_source_url": "https://sinta.kemdiktisaintek.go.id/authors/profile/259792/?view=researches"
+  },
+  {
+    "judul": "SAFETY FUNCTION DEPLOYMENT (SFD) SEBAGAI ALAT MENGELOLA RISIKO BAHAYA DAN KECELAKAAN KERJA DI UKM",
+    "leader": "Arie Restu Wardhani",
+    "scheme": "PENELITIAN HIBAH INSTITUSI ( PERINTIS )",
+    "year": 2025,
+    "fund_rp": 5000000,
+    "status": "Approved",
+    "source": "INTERNAL SOURCE",
+    "members": [
+      {
+        "sinta_id": 5990635,
+        "nama": "Silviana"
+      },
+      {
+        "sinta_id": 259792,
+        "nama": "Syahroni Wahyu Iriananda"
+      }
+    ],
+    "sinta_source_url": "https://sinta.kemdiktisaintek.go.id/authors/profile/259792/?view=researches"
+  },
+  {
+    "judul": "OPTIMASI HYPERPARAMETER PADA ANALISIS SENTIMENT BERBASIS ASPEK ULASAN APLIKASI ANDROID BANK DIGITAL INDONESIA BERBASIS ALGORITMA XGBOOST",
+    "leader": "Syahroni Wahyu Iriananda",
+    "scheme": "PENELITIAN HIBAH INSTITUSI ( PERINTIS )",
+    "year": 2025,
+    "fund_rp": 5000000,
+    "status": "Approved",
+    "source": "INTERNAL SOURCE",
+    "members": [
+      {
+        "sinta_id": 5977277,
+        "nama": "Arie Restu Wardhani"
+      },
+      {
+        "sinta_id": 6829884,
+        "nama": "Shaifany Fatriana Kadir"
+      }
+    ],
+    "sinta_source_url": "https://sinta.kemdiktisaintek.go.id/authors/profile/259792/?view=researches"
+  },
+  {
+    "judul": "DETEKSI KOMENTAR SPAM PADA YOUTUBE DENGAN ENSEMBLE BOOSTING (XGBM)",
+    "leader": "Syahroni Wahyu Iriananda",
+    "scheme": "PENELITIAN RINTISAN DOSEN (PERINTIS) ( PERINTIS )",
+    "year": 2024,
+    "fund_rp": 5000000,
+    "status": "Approved",
+    "source": "INTERNAL SOURCE",
+    "members": [
+      {
+        "sinta_id": 6739345,
+        "nama": "Niken Paramita"
+      }
+    ],
+    "sinta_source_url": "https://sinta.kemdiktisaintek.go.id/authors/profile/259792/?view=researches"
+  },
+  {
+    "judul": "SISTEM ANALISIS SENTIMEN OPINI PEMBELI PRODUK E-MARKETPLACE INDONESIA BERBASIS METODE LSTM",
+    "leader": "Syahroni Wahyu Iriananda",
+    "scheme": "PERINTIS ( PERINTIS )",
+    "year": 2023,
+    "fund_rp": 5000000,
+    "status": "Approved",
+    "source": "INTERNAL SOURCE",
+    "members": [
+      {
+        "sinta_id": 6729051,
+        "nama": "Rangga Pahlevi Putra"
+      }
+    ],
+    "sinta_source_url": "https://sinta.kemdiktisaintek.go.id/authors/profile/259792/?view=researches"
+  },
+  {
+    "judul": "OPTIMASI HYPERPARAMETER PADA ANALISIS SENTIMEN BERBASIS LEKSIKON ULASAN PENGGUNA APLIKASI GAME MOBA DENGAN METODE GRID SEARCH",
+    "leader": "Syahroni Wahyu Iriananda",
+    "scheme": "PERINTIS ( PERINTIS )",
+    "year": 2022,
+    "fund_rp": 2500000,
+    "status": "Approved",
+    "source": "INTERNAL SOURCE",
+    "members": [],
+    "sinta_source_url": "https://sinta.kemdiktisaintek.go.id/authors/profile/259792/?view=researches"
+  },
+  {
+    "judul": "ANALISIS SENTIMEN PADA APLIKASI ANDROID GOOGLE PLAY TERBAIK MENGGUNAKAN METODE KNN DAN SVM",
+    "leader": "Syahroni Wahyu Iriananda",
+    "scheme": "PERINTIS ( PERINTIS )",
+    "year": 2021,
+    "fund_rp": 2500000,
+    "status": "Approved",
+    "source": "INTERNAL SOURCE",
+    "members": [],
+    "sinta_source_url": "https://sinta.kemdiktisaintek.go.id/authors/profile/259792/?view=researches"
+  },
+  {
+    "judul": "PENGEMBANGAN STRATEGI PEMASARAN MELALUI OPTIMALISASI MEDIA SOSIAL PADA USAHA DAUN REMPAH CATERING",
+    "leader": "Syahroni Wahyu Iriananda",
+    "scheme": "PERINTIS ( PERINTIS )",
+    "year": 2021,
+    "fund_rp": 2500000,
+    "status": "Approved",
+    "source": "INTERNAL SOURCE",
+    "members": [
+      {
+        "sinta_id": 5989963,
+        "nama": "Nova Risdiyanto Ismail"
+      }
+    ],
+    "sinta_source_url": "https://sinta.kemdiktisaintek.go.id/authors/profile/259792/?view=researches"
+  },
+  {
+    "judul": "PENGEMBANGAN SISTEM TATA KELOLA WEBSITE DESA MULYOARJO BERBASIS HIERARCHY MODEL VIEW CONTROLLER (HMVC) FRAMEWORK",
+    "leader": "Syahroni Wahyu Iriananda",
+    "scheme": "PERINTIS ( PERINTIS )",
+    "year": 2020,
+    "fund_rp": 3000000,
+    "status": "Approved",
+    "source": "INTERNAL SOURCE",
+    "members": [
+      {
+        "sinta_id": 5989963,
+        "nama": "Nova Risdiyanto Ismail"
+      }
+    ],
+    "sinta_source_url": "https://sinta.kemdiktisaintek.go.id/authors/profile/259792/?view=researches"
+  }
+]
