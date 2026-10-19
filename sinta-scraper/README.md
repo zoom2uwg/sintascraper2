@@ -263,4 +263,82 @@ node scraper.js
    - `sinta_export.html` (Preview Tabel Data)
 
 ---
+
+## 6. 📊 Export Laporan Profesional (NEW!)
+
+Fitur baru untuk menghasilkan laporan penelitian dalam format **PDF** dan **HTML** dengan layout modern dan profesional.
+
+### Fitur Laporan:
+- ✨ **Layout Modern** - Desain dengan gradien warna dan card system
+- 📊 **Statistik Lengkap** - Total penelitian, pendanaan, rentang tahun, peneliti
+- 📁 **Terorganisir** - Pengelompokan per tahun dengan detail lengkap
+- 🖨️ **Print-Ready** - Optimized untuk printing
+- 📱 **Responsive** - Tampil baik di semua device
+
+### Cara Menggunakan:
+
+#### Generate Both PDF & HTML:
+```bash
+npm run export:report
+# atau
+node export-report.js both
+```
+
+#### Generate HTML Only:
+```bash
+npm run export:report-html
+# atau
+node export-report.js html
+```
+
+#### Generate PDF Only:
+```bash
+npm run export:report-pdf
+# atau
+node export-report.js pdf
+```
+
+### Input Data:
+Laporan menggunakan data dari:
+- `fixtures/sample-authors.json` - Daftar peneliti
+- `fixtures/sample-researches.json` - Daftar penelitian
+
+### Output:
+File laporan disimpan di folder `output/` dengan format:
+- `laporan-sinta-YYYY-MM-DDTHH-mm-ss.html`
+- `laporan-sinta-YYYY-MM-DDTHH-mm-ss.pdf`
+
+### Contoh Programmatic Usage:
+```javascript
+const { exportReport } = require('./export-report');
+
+await exportReport({
+    authorsFile: './data/authors.json',
+    researchesFile: './data/researches.json',
+    outputDir: './reports',
+    format: 'both',
+    metadata: {
+        institution: 'Universitas Widyagama Malang'
+    }
+});
+```
+
+📖 **Dokumentasi lengkap:** Lihat [README-EXPORT.md](./README-EXPORT.md)
+
+---
+
+## 7. NPM Scripts
+
+Berikut daftar perintah yang tersedia:
+
+```bash
+npm start                        # Jalankan scraper
+npm run export:report            # Export laporan PDF & HTML
+npm run export:report-html       # Export laporan HTML saja
+npm run export:report-pdf        # Export laporan PDF saja
+npm run export:borang-penelitian # Export borang penelitian ke Excel
+npm run export:borang-pengabdian # Export borang pengabdian ke Excel
+```
+
+---
 *Dikembangkan dengan teknologi Puppeteer & Node.js.*

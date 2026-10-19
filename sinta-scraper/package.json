@@ -7,6 +7,9 @@
     "dev": "node scraper.js",
     "export:borang-penelitian": "node export-borang.js --jenis penelitian --input fixtures/sample-researches.json --authors fixtures/sample-authors.json",
     "export:borang-pengabdian": "node export-borang.js --jenis pengabdian --input fixtures/sample-researches.json --authors fixtures/sample-authors.json --out exports/borang-pengabdian",
+    "export:report": "node export-report.js both",
+    "export:report-html": "node export-report.js html",
+    "export:report-pdf": "node export-report.js pdf",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
