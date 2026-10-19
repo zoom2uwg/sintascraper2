@@ -515,14 +515,38 @@ function generateHTMLReport(data) {
     return html;
 }
 
+// Helper to get Chrome executable path
+function getChromeExecutablePath() {
+    const paths = [
+        'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+        'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
+        'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe',
+        'C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe'
+    ];
+    for (const p of paths) {
+        if (fs.existsSync(p)) {
+            console.log(`Found browser at: ${p}`);
+            return p;
+        }
+    }
+    return undefined;
+}
+
 // Generate PDF from HTML
 async function generatePDF(htmlContent, outputPath) {
     console.log('Generating PDF...');
     
-    const browser = await puppeteer.launch({
+    const chromePath = getChromeExecutablePath();
+    const launchOptions = {
         headless: 'new',
         args: ['--no-sandbox', '--disable-setuid-sandbox']
-    });
+    };
+    
+    if (chromePath) {
+        launchOptions.executablePath = chromePath;
+    }
+    
+    const browser = await puppeteer.launch(launchOptions);
     
     const page = await browser.newPage();
     await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
