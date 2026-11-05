@@ -1,36 +1,33 @@
 const fs = require('fs');
-const cheerio = require('cheerio');
+const path = require('path');
+const { extractPageData } = require('./src/parsers');
 
 function analyzeFile(filePath) {
-    console.log(`\n--- Analyzing ${filePath} ---`);
-    const html = fs.readFileSync(filePath, 'utf-8');
-    const $ = cheerio.load(html);
+  console.log(`\n--- Analyzing ${path.basename(filePath)} ---`);
+  const html = fs.readFileSync(filePath, 'utf-8');
+  const data = extractPageData(html);
 
-    // Look for lists/tables
-    console.log("Found .ar-list-item:", $('.ar-list-item').length);
-    console.log("Found .uk-card:", $('.uk-card').length);
-    console.log("Found tr:", $('tr').length);
-    
-    // Check specific elements inside what might be a list
-    const items = $('.ar-list-item').slice(0, 2);
-    items.each((i, el) => {
-        const title = $(el).find('.ar-title, .item-title, h3, a.ar-title').text().trim() || $(el).find('a').first().text().trim();
-        const link = $(el).find('a').first().attr('href');
-        console.log(`Item ${i+1}:`);
-        console.log(`  Title: ${title}`);
-        console.log(`  Link: ${link}`);
-        console.log(`  HTML: ${$(el).html().substring(0, 200)}...`);
-    });
+  console.log(`Page Type       : ${data.pageType}`);
+  console.log(`Source URL      : ${data.url}`);
+  console.log(`Logged In       : ${data.session.isLoggedIn} (${data.session.accountName || 'Guest'})`);
+  console.log(`Entity Name     : ${data.header.name} (${data.header.entityType})`);
+  console.log(`Active View     : ${data.activeView || '-'}`);
+  console.log(`Available Views : ${data.navigation.availableViews.join(', ') || '-'}`);
+  console.log(`Scores          : ${JSON.stringify(data.scores)}`);
+  console.log(
+    `Pagination      : Page ${data.pagination.currentPage} of ${data.pagination.totalPages} | Total Records: ${data.pagination.totalRecords} | hasNext: ${data.pagination.hasNext}`
+  );
+  console.log(`Departments     : ${data.departments.length}`);
+  console.log(`Items           : ${data.items.length}`);
 
-    // For authors list in department page
-    const authors = $('a[href*="/authors/profile/"]').slice(0, 2);
-    console.log(`\nFound ${$('a[href*="/authors/profile/"]').length} author links`);
-    authors.each((i, el) => {
-        console.log(`Author ${i+1}: ${$(el).text().trim()} - ${$(el).attr('href')}`);
-    });
+  data.items.slice(0, 2).forEach((item, i) => {
+    console.log(`  Item ${i + 1}: [${item.dedup_key}] ${item.title} (${item.year})`);
+    console.log(`    Meta: ${item.raw_metadata}`);
+  });
 }
 
-analyzeFile('/home/user/uploads/SINTA - Science and Technology Index-DepartmentProfile.html');
-analyzeFile('/home/user/uploads/SINTA - Science and Technology Index-AuthorsProfile.html');
-analyzeFile('/home/user/uploads/SINTA - Science and Technology Index-AuthorResearch.html');
-
+const rootDir = path.resolve(__dirname, '..');
+analyzeFile(path.join(rootDir, 'SINTA - Science and Technology Index-Affiliation.html'));
+analyzeFile(path.join(rootDir, 'SINTA - Science and Technology Index-DepartmentProfile.html'));
+analyzeFile(path.join(rootDir, 'SINTA - Science and Technology Index-AuthorsProfile.html'));
+analyzeFile(path.join(rootDir, 'SINTA - Science and Technology Index-AuthorResearch.html'));

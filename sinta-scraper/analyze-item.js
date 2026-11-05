@@ -1,19 +1,20 @@
 const fs = require('fs');
-const cheerio = require('cheerio');
+const path = require('path');
+const { extractPageData } = require('./src/parsers');
 
-function analyzeListItems(filePath) {
-    const html = fs.readFileSync(filePath, 'utf-8');
-    const $ = cheerio.load(html);
+function analyzeFirstItem(filePath) {
+  const html = fs.readFileSync(filePath, 'utf-8');
+  const data = extractPageData(html);
 
-    $('.ar-list-item').slice(0, 1).each((i, el) => {
-        console.log(`--- ITEM ${filePath} ---`);
-        console.log($(el).html());
-        
-        const title = $(el).find('.ar-title a').text().trim();
-        const authors = $(el).find('.ar-meta, .uk-text-meta').text().replace(/\s+/g, ' ').trim();
-        console.log("Extracted title:", title);
-        console.log("Extracted authors:", authors);
-    });
+  console.log(`\n--- FIRST ITEM: ${path.basename(filePath)} ---`);
+  if (data.items.length > 0) {
+    console.log(JSON.stringify(data.items[0], null, 2));
+  } else {
+    console.log('No .ar-list-item on this page.');
+  }
 }
-analyzeListItems('/home/user/uploads/SINTA - Science and Technology Index-AuthorResearch.html');
-analyzeListItems('/home/user/uploads/SINTA - Science and Technology Index-AuthorsProfile.html');
+
+const rootDir = path.resolve(__dirname, '..');
+analyzeFirstItem(path.join(rootDir, 'SINTA - Science and Technology Index-AuthorResearch.html'));
+analyzeFirstItem(path.join(rootDir, 'SINTA - Science and Technology Index-AuthorsProfile.html'));
+analyzeFirstItem(path.join(rootDir, 'SINTA - Science and Technology Index-DepartmentProfile.html'));

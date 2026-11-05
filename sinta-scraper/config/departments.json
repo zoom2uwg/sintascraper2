@@ -1,0 +1,41 @@
+{
+  "affiliationId": "2058",
+  "affiliationCode": "071030",
+  "affiliationName": "Universitas Widya Gama",
+  "affiliationUrl": "https://sinta.kemdiktisaintek.go.id/affiliations/profile/2058",
+  "affiliationDepartmentsUrl": "https://sinta.kemdiktisaintek.go.id/affiliations/departments/2058/071030",
+  "affiliationAuthorsUrl": "https://sinta.kemdiktisaintek.go.id/affiliations/authors/2058",
+  "parentKey": "420D8E73-68F0-4044-86CF-5138D1419B20",
+  "departments": [
+    {
+      "slug": "informatika",
+      "name": "Teknik Informatika",
+      "level": "S1",
+      "codeProdi": "55201",
+      "id": "8A894EDC-B2F1-4575-95B8-91EB1E708F4F",
+      "canonicalUrl": "https://sinta.kemdiktisaintek.go.id/departments/profile/2058/420D8E73-68F0-4044-86CF-5138D1419B20/8A894EDC-B2F1-4575-95B8-91EB1E708F4F",
+      "legacyUrl": "https://sinta.kemdiktisaintek.go.id/departments/profile/2058/071030/55201",
+      "authorsUrl": "https://sinta.kemdiktisaintek.go.id/departments/authors/2058/420D8E73-68F0-4044-86CF-5138D1419B20/8A894EDC-B2F1-4575-95B8-91EB1E708F4F"
+    },
+    {
+      "slug": "bisnis-digital",
+      "name": "Bisnis Digital",
+      "level": "S1",
+      "codeProdi": "61209",
+      "id": "BB930200-F625-4220-BD63-94F4D1FD2E50",
+      "canonicalUrl": "https://sinta.kemdiktisaintek.go.id/departments/profile/2058/420D8E73-68F0-4044-86CF-5138D1419B20/BB930200-F625-4220-BD63-94F4D1FD2E50",
+      "legacyUrl": "https://sinta.kemdiktisaintek.go.id/departments/profile/2058/071030/61209",
+      "authorsUrl": "https://sinta.kemdiktisaintek.go.id/departments/authors/2058/420D8E73-68F0-4044-86CF-5138D1419B20/BB930200-F625-4220-BD63-94F4D1FD2E50"
+    },
+    {
+      "slug": "sti",
+      "name": "Sistem dan Teknologi Informasi",
+      "level": "S1",
+      "codeProdi": "59201",
+      "id": "895FD91B-B0F2-41E7-99EB-F2D3997A9B0F",
+      "canonicalUrl": "https://sinta.kemdiktisaintek.go.id/departments/profile/2058/420D8E73-68F0-4044-86CF-5138D1419B20/895FD91B-B0F2-41E7-99EB-F2D3997A9B0F",
+      "legacyUrl": "https://sinta.kemdiktisaintek.go.id/departments/profile/2058/071030/59201",
+      "authorsUrl": "https://sinta.kemdiktisaintek.go.id/departments/authors/2058/420D8E73-68F0-4044-86CF-5138D1419B20/895FD91B-B0F2-41E7-99EB-F2D3997A9B0F"
+    }
+  ]
+}

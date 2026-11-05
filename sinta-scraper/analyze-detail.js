@@ -1,47 +1,38 @@
 const fs = require('fs');
-const cheerio = require('cheerio');
+const path = require('path');
+const { extractPageData } = require('./src/parsers');
 
-function analyzeListItems(filePath) {
-    console.log(`\n--- Detailed Analysis ${filePath} ---`);
-    const html = fs.readFileSync(filePath, 'utf-8');
-    const $ = cheerio.load(html);
+function analyzeDetail(filePath) {
+  console.log(`\n--- Detailed Analysis: ${path.basename(filePath)} ---`);
+  const html = fs.readFileSync(filePath, 'utf-8');
+  const data = extractPageData(html);
 
-    $('.ar-list-item').slice(0, 3).each((i, el) => {
-        const title = $(el).find('.ar-title a').text().trim();
-        const href = $(el).find('.ar-title a').attr('href');
-        const meta = $(el).find('.ar-meta').text().replace(/\s+/g, ' ').trim();
-        const year = $(el).find('.ar-year').text().trim();
-        const pub = $(el).find('.ar-pub').text().trim();
-        const authors = $(el).find('a.uk-text-meta').map((i, e) => $(e).text().trim()).get().join(', '); // Not sure if this is the correct selector
-        
-        console.log(`Item ${i+1}:`);
-        console.log(`  Title: ${title}`);
-        console.log(`  Href: ${href}`);
-        console.log(`  HTML Sample: ${$(el).html().substring(0, 300).replace(/\n/g, '')}`);
+  console.log('Header        :', JSON.stringify(data.header, null, 2));
+  console.log('Scores        :', JSON.stringify(data.scores));
+  console.log('SummaryMatrix :', JSON.stringify(data.summaryMatrix));
+  console.log('Charts        :', JSON.stringify({
+    quartilePie: data.charts.quartilePie?.distribution,
+    researchRadar: data.charts.researchRadar?.breakdown,
+    yearlyTrends: Object.keys(data.charts.yearlyTrends),
+  }));
+  console.log('Pagination    :', JSON.stringify(data.pagination));
+
+  data.items.slice(0, 3).forEach((item, idx) => {
+    console.log(`Item ${idx + 1}:`, {
+      dedup_key: item.dedup_key,
+      title: item.title,
+      year: item.year,
+      authors: item.authors,
+      journal_or_scheme: item.journal,
+      fund_rp: item.fund_rp,
+      nomor_permohonan: item.nomor_permohonan,
+      scopus_eid: item.scopus_eid,
     });
+  });
 }
 
-function findAuthorsList(filePath) {
-    console.log(`\n--- Looking for Author List in ${filePath} ---`);
-    const html = fs.readFileSync(filePath, 'utf-8');
-    const $ = cheerio.load(html);
-    
-    // In department pages, authors are usually displayed in a specific list, let's see structure of .profile-author
-    const authorLinks = $('a[href*="/authors/profile/"]').filter((i, el) => {
-        return !$(el).attr('href').endsWith('#'); // exclude nav dropdowns
-    });
-    
-    console.log(`Found ${authorLinks.length} actual author links`);
-    authorLinks.slice(0, 5).each((i, el) => {
-        console.log(`  Name: ${$(el).text().trim()}`);
-        console.log(`  Href: ${$(el).attr('href')}`);
-        console.log(`  Parent HTML: ${$(el).parent().html().substring(0, 100).replace(/\n/g, '')}`);
-    });
-    
-    // Let's find exactly how the list of authors looks like in the Department Authors page. Wait, I only have DepartmentProfile, Affiliation, AuthorsProfile, AuthorResearch.
-}
-
-analyzeListItems('/home/user/uploads/SINTA - Science and Technology Index-AuthorsProfile.html');
-analyzeListItems('/home/user/uploads/SINTA - Science and Technology Index-AuthorResearch.html');
-findAuthorsList('/home/user/uploads/SINTA - Science and Technology Index-DepartmentProfile.html');
-findAuthorsList('/home/user/uploads/SINTA - Science and Technology Index-Affiliation.html');
+const rootDir = path.resolve(__dirname, '..');
+analyzeDetail(path.join(rootDir, 'SINTA - Science and Technology Index-AuthorsProfile.html'));
+analyzeDetail(path.join(rootDir, 'SINTA - Science and Technology Index-AuthorResearch.html'));
+analyzeDetail(path.join(rootDir, 'SINTA - Science and Technology Index-DepartmentProfile.html'));
+analyzeDetail(path.join(rootDir, 'SINTA - Science and Technology Index-Affiliation.html'));

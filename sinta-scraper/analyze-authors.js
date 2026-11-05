@@ -1,20 +1,29 @@
 const fs = require('fs');
-const cheerio = require('cheerio');
+const path = require('path');
+const { extractPageData } = require('./src/parsers');
 
 function findAuthorsList(filePath) {
-    const html = fs.readFileSync(filePath, 'utf-8');
-    const $ = cheerio.load(html);
-    
-    // Sometimes authors are in .profile-name or .author-name
-    $('a[href*="/authors/profile/"]').slice(0, 10).each((i, el) => {
-        if(!$(el).attr('href').endsWith('#')){
-            console.log(`Href: ${$(el).attr('href')}`);
-            console.log(`Text in A: ${$(el).text().trim()}`);
-            console.log(`Parent HTML: ${$(el).parent().html()}`);
-            console.log(`Next HTML: ${$(el).next().html()}`);
-            console.log('---');
-        }
+  const html = fs.readFileSync(filePath, 'utf-8');
+  const data = extractPageData(html);
+
+  console.log(`=== ${path.basename(filePath)} ===`);
+  console.log(`Pagination: ${data.pagination.rawText}`);
+
+  if (data.departments.length > 0) {
+    data.departments.forEach((dept) => {
+      console.log(`Department: ${dept.name} (${dept.level} - Kode: ${dept.code_prodi})`);
+      console.log(`  Authors URL: ${dept.authors_url}`);
+      dept.preview_authors.forEach((aut) => {
+        console.log(`  Preview Author: [${aut.sinta_id}] ${aut.name} -> ${aut.profile_url}`);
+      });
     });
+  }
+
+  if (data.authors.length > 0) {
+    data.authors.forEach((aut) => {
+      console.log(`Author: [${aut.sinta_id}] ${aut.name} -> ${aut.profile_url}`);
+    });
+  }
 }
 
-findAuthorsList('/home/user/uploads/SINTA - Science and Technology Index-Affiliation.html');
+findAuthorsList(path.resolve(__dirname, '../SINTA - Science and Technology Index-Affiliation.html'));
